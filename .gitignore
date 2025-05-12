@@ -7,4 +7,5 @@ flaskapp.py
 *.ipynb
 efficient_net.py
 __pycache__/
-*.pyc 
+*.pyc
+.DS_Store 
