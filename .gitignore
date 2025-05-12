@@ -9,3 +9,4 @@ efficient_net.py
 __pycache__/
 *.pyc
 .DS_Store 
+best_model.pth
