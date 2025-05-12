@@ -5,8 +5,10 @@
 flaskapp.py 
 *.pages
 *.ipynb
-efficient_net.py
 __pycache__/
 *.pyc
 .DS_Store 
+
+# Added on Git as release files
 best_model.pth
+best_efficient_net.pth
