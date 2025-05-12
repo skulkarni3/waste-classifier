@@ -3,8 +3,9 @@ import torch
 from PIL import Image
 import io
 import os
-from efficient_net import EfficientNetWasteClassifier
+import requests
 from waste_classifier import transform, WasteClassifierCNN
+from efficient_net import EfficientNetWasteClassifier
 import numpy as np
 
 # Set page config
@@ -50,17 +51,36 @@ st.markdown("""
 @st.cache_resource
 def load_model():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model = WasteClassifierCNN().to(device)
+    model = EfficientNetWasteClassifier().to(device)
     
-    # Load the best model weights
-    model_path = "https://github.com/skulkarni3/waste-classifier/releases/tag/v1.0.0"
-    if os.path.exists(model_path):
+    # URL to the model weights on GitHub
+    model_url = "https://github.com/skulkarni3/waste-classifier/releases/download/v1.1.0/best_efficient_net.pth"
+
+    # Download the model file from GitHub if it's not already cached
+    try:
+        response = requests.get(model_url)
+        response.raise_for_status()  # Check for a successful response (200 OK)
+        
+        # Save the model file temporarily
+        model_path = "best_model.pth"
+        with open(model_path, "wb") as f:
+            f.write(response.content)
+        
+        # Load the model weights into the model
         checkpoint = torch.load(model_path, map_location=device)
         model.load_state_dict(checkpoint['model_state_dict'])
         model.eval()
+
+        # Clean up the temporary file
+        os.remove(model_path)
+
         return model
-    else:
-        st.error(f"Model file not found at {model_path}")
+    
+    except requests.exceptions.RequestException as e:
+        st.error(f"Error downloading the model: {e}")
+        return None
+    except Exception as e:
+        st.error(f"Error loading the model: {e}")
         return None
 
 def predict_image(model, image):
