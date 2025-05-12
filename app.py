@@ -3,6 +3,7 @@ import torch
 from PIL import Image
 import io
 import os
+from efficient_net import EfficientNetWasteClassifier
 from waste_classifier import transform, WasteClassifierCNN
 import numpy as np
 

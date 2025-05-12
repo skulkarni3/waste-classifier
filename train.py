@@ -24,6 +24,19 @@ def plot_confusion_matrix(cm, classes, save_path):
     plt.close()
 
 def train_model(waste_classification_path, household_waste_path, garbage_dataset_path, realwaste_path, use_only_landfill_from_new=False):
+    """
+    Train the waste classification model.
+    
+    Args:
+        waste_classification_path (str): Path to the waste classification dataset
+        household_waste_path (str): Path to the household waste dataset
+        garbage_dataset_path (str): Path to the garbage dataset
+        realwaste_path (str): Path to the realwaste dataset
+        use_only_landfill_from_new (bool): Whether to use only landfill images from new dataset
+    
+    Returns:
+        str: Path to the directory containing the saved model
+    """
     # Create models directory if it doesn't exist
     models_dir = os.path.join(os.path.dirname(__file__), 'models')
     os.makedirs(models_dir, exist_ok=True)
