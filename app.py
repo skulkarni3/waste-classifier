@@ -52,7 +52,7 @@ def load_model():
     model = WasteClassifierCNN().to(device)
     
     # Load the best model weights
-    model_path = "models/run_20250511_130453/checkpoint_epoch_20.pth"
+    model_path = "https://github.com/skulkarni3/waste-classifier/releases/tag/v1.0.0"
     if os.path.exists(model_path):
         checkpoint = torch.load(model_path, map_location=device)
         model.load_state_dict(checkpoint['model_state_dict'])
