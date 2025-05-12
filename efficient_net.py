@@ -8,7 +8,7 @@ from torch.utils.data import DataLoader
 import os
 from waste_classifier import CombinedWasteDataset, compute_class_weights
 from sklearn.metrics import f1_score, confusion_matrix
-import seaborn as sns
+# import seaborn as sns
 import matplotlib.pyplot as plt
 from datetime import datetime
 
