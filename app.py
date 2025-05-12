@@ -53,7 +53,7 @@ def load_model():
     model = WasteClassifierCNN().to(device)
     
     # URL to the model weights on GitHub
-    model_url = "https://github.com/skulkarni3/waste-classifier/releases/download/v1.0.0/best_model.pth"
+    model_url = "https://github.com/skulkarni3/waste-classifier/releases/download/v1.1.0/best_efficient_net.pth"
 
     # Download the model file from GitHub if it's not already cached
     try:
