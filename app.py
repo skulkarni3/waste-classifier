@@ -5,6 +5,7 @@ import io
 import os
 import requests
 from waste_classifier import transform, WasteClassifierCNN
+from efficient_net import EfficientNetWasteClassifier
 import numpy as np
 
 # Set page config
@@ -50,7 +51,7 @@ st.markdown("""
 @st.cache_resource
 def load_model():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model = WasteClassifierCNN().to(device)
+    model = EfficientNetWasteClassifier().to(device)
     
     # URL to the model weights on GitHub
     model_url = "https://github.com/skulkarni3/waste-classifier/releases/download/v1.1.0/best_efficient_net.pth"
