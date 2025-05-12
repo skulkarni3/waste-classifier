@@ -3,6 +3,7 @@ import torch
 from PIL import Image
 import io
 import os
+import requests
 from waste_classifier import transform, WasteClassifierCNN
 import numpy as np
 
