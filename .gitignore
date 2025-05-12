@@ -1,0 +1,10 @@
+/data
+/models
+/mlruns
+/templates
+flaskapp.py 
+*.pages
+*.ipynb
+efficient_net.py
+__pycache__/
+*.pyc 
