@@ -4,7 +4,7 @@ from torchvision import transforms
 import torchvision.models as models
 from torchvision.models import efficientnet_b0, EfficientNet_B0_Weights
 from torch.utils.data import DataLoader
-import mlflow
+# import mlflow
 import os
 from waste_classifier import CombinedWasteDataset, compute_class_weights
 from sklearn.metrics import f1_score, confusion_matrix
